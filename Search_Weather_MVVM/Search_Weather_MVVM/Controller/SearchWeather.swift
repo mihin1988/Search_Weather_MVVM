@@ -13,6 +13,7 @@ class SearchWeather: UIViewController,UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet var tblCityList: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var segment: UISegmentedControl!
     
     var arrLoaclList : [List] = []
     let defaults = UserDefaults.standard
@@ -34,9 +35,28 @@ class SearchWeather: UIViewController,UITableViewDelegate, UITableViewDataSource
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.title = "Weather Forecast"
         
-//        appDelegate.prepareCityList()
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.navigationBarColor as Any], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white as Any], for: .normal)
+
+        segment.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+
+        
     }
 
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        if sender.selectedSegmentIndex == 0 {
+            arrLoaclList = appDelegate.arrList
+        }else{
+            arrLoaclList = appDelegate.arrList.filter { list in
+                return array.contains(list.id ?? 0)
+            }
+        }
+        tblCityList.reloadData()
+
+    }
+    
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,7 +130,8 @@ class SearchWeather: UIViewController,UITableViewDelegate, UITableViewDataSource
             array.append(sender.tag)
         }
         defaults.set(array, forKey: "SavedCity")
-        tblCityList.reloadData()
+        segmentedControlValueChanged(segment)
+//        tblCityList.reloadData()
     }
 }
 

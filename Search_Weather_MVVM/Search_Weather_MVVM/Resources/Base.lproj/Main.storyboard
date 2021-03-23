@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oHu-mK-Ewv">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="OsL-Xs-NI7"/>
@@ -26,27 +26,40 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Uwe-5i-Upq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="j3K-Ta-WzZ"/>
                                 </connections>
                             </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VUy-ph-ucm">
+                                <rect key="frame" x="25" y="64" width="364" height="32"/>
+                                <color key="backgroundColor" red="0.023529411760000001" green="0.16078431369999999" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="All City"/>
+                                    <segment title="Forecast City"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Uwe-5i-Upq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4D2-69-IGq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VUy-ph-ucm" secondAttribute="trailing" constant="25" id="6vE-WR-3bl"/>
                             <constraint firstItem="oHu-mK-Ewv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yiq-eN-Vjz"/>
                             <constraint firstItem="oHu-mK-Ewv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="g7l-0W-YWx"/>
-                            <constraint firstItem="Uwe-5i-Upq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pNE-Tr-qs8"/>
+                            <constraint firstItem="Uwe-5i-Upq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="72" id="pNE-Tr-qs8"/>
                             <constraint firstItem="oHu-mK-Ewv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rIr-cc-96d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uwe-5i-Upq" secondAttribute="trailing" id="sEb-Zt-XOI"/>
+                            <constraint firstItem="VUy-ph-ucm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="sMB-Rl-5yj"/>
                             <constraint firstItem="oHu-mK-Ewv" firstAttribute="top" secondItem="Uwe-5i-Upq" secondAttribute="bottom" id="t8i-yt-5aH"/>
+                            <constraint firstItem="VUy-ph-ucm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="wmV-dl-G4e"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Uwe-5i-Upq" id="9Zw-eK-xMg"/>
+                        <outlet property="segment" destination="VUy-ph-ucm" id="5P4-JU-wwF"/>
                         <outlet property="tblCityList" destination="oHu-mK-Ewv" id="zW3-20-8TG"/>
                     </connections>
                 </viewController>
